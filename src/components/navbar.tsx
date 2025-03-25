@@ -70,14 +70,14 @@ export function Navbar() {
                 <Button
                   variant="ghost"
                   className="hidden md:flex"
-                  onClick={() => navigate('/auth')}
+                  onClick={() => navigate('/login')}
                 >
                   Sign In
                 </Button>
                 <Button
                   variant="outline"
                   className="flex items-center gap-2"
-                  onClick={() => navigate('/auth')}
+                  onClick={() => navigate('/login')}
                 >
                   <Menu className="h-4 w-4" />
                   <User className="h-4 w-4" />

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="250" viewBox="0 0 200 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- House shape -->
+  <path d="M40 100 L100 40 L160 100 L160 200 L40 200 Z" fill="#D4A968"/>
+  <!-- Window -->
+  <rect x="90" y="120" width="20" height="20" fill="#FFFFFF"/>
+  <!-- Additional geometric elements -->
+  <path d="M120 100 L160 60 L160 100 Z" fill="#000000"/>
+  <path d="M80 140 L120 140 L120 180 L80 180 Z" fill="#E8C696"/>
+  <!-- Text -->
+  <text x="100" y="230" text-anchor="middle" font-family="serif" font-size="24" fill="#000000">
+    TEE PREMIUM
+  </text>
+  <text x="100" y="245" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#000000">
+    HOMES &amp; SERVICES
+  </text>
+</svg> 

@@ -1,0 +1,34 @@
+:root {
+  --color-brand: 212 169 104;
+  --color-brand-dark: 190 152 93;
+  --color-background: 255 255 255;
+  --color-foreground: 0 0 0;
+}
+
+.bg-brand {
+  background-color: rgb(var(--color-brand));
+}
+
+.bg-brand-dark {
+  background-color: rgb(var(--color-brand-dark));
+}
+
+.text-brand {
+  color: rgb(var(--color-brand));
+}
+
+.border-brand {
+  border-color: rgb(var(--color-brand));
+}
+
+.hover\:bg-brand-dark:hover {
+  background-color: rgb(var(--color-brand-dark));
+}
+
+.focus\:ring-brand:focus {
+  --tw-ring-color: rgb(var(--color-brand));
+}
+
+.bg-gradient-brand {
+  background-image: linear-gradient(to right, rgb(var(--color-brand)), rgb(var(--color-brand-dark)));
+} 
