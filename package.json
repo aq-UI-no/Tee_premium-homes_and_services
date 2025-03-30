@@ -12,7 +12,6 @@
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
     "@supabase/supabase-js": "^2.39.7",
-    "@types/react-datepicker": "^7.0.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "date-fns": "^3.3.1",
