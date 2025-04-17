@@ -1,0 +1,89 @@
+.logoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.logoContainer:hover {
+  transform: scale(1.05);
+}
+
+.logoImage {
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.logoContainer:hover .logoImage {
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+/* SVG specific styles */
+.logoSvgText {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-weight: bold;
+  font-size: 24px;
+  transition: all 0.3s ease;
+}
+
+.logoContainer:hover .logoSvgText {
+  fill: #2563eb; /* Blue color on hover */
+  transform: scale(1.05);
+}
+
+/* Animation keyframes */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.2);
+  }
+  100% {
+    filter: brightness(1);
+  }
+}
+
+/* Apply animations */
+.logoImage {
+  animation: pulse 2s infinite ease-in-out;
+}
+
+.logoContainer:hover .logoImage {
+  animation: shimmer 1.5s infinite ease-in-out;
+}
+
+/* Add a shimmer effect */
+.logoContainer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  50% { left: 100%; }
+  100% { left: 100%; }
+} 

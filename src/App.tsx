@@ -16,6 +16,7 @@ import { SearchPage } from './pages/search';
 import { PropertiesPage as ClientPropertiesPage } from './pages/properties';
 import { ServicesPage } from './pages/services';
 import { AboutPage } from './pages/about';
+import ContactPage from './pages/contact';
 import { FilterProvider } from './contexts/FilterContext';
 import { AdminProtectedRoute } from './components/auth/AdminProtectedRoute';
 import './styles/colors.css';
@@ -110,6 +111,18 @@ export default function App() {
                 <Navigation />
                 <main className="flex-grow">
                   <AboutPage />
+                </main>
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/contact"
+            element={
+              <>
+                <Navigation />
+                <main className="flex-grow">
+                  <ContactPage />
                 </main>
                 <Footer />
               </>

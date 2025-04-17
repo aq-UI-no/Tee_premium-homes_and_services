@@ -196,17 +196,17 @@ export function AdminDashboard() {
   return (
     <AdminLayout>
       <div className="space-y-6">
-        <div className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-bold">Admin Dashboard</h1>
-          <Button
-            variant="outline"
-            onClick={() => navigate('/admin/settings')}
-            className="flex items-center gap-2"
-          >
-            <Settings className="h-5 w-5" />
-            Settings
-          </Button>
-        </div>
+      <div className="flex justify-between items-center mb-8">
+        <h1 className="text-3xl font-bold">Admin Dashboard</h1>
+        <Button
+          variant="outline"
+          onClick={() => navigate('/admin/settings')}
+          className="flex items-center gap-2"
+        >
+          <Settings className="h-5 w-5" />
+          Settings
+        </Button>
+      </div>
 
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -258,7 +258,7 @@ export function AdminDashboard() {
                   className="border-b border-gray-200 last:border-0 pb-4 last:pb-0"
                 >
                   <div className="flex justify-between items-start">
-                    <div>
+            <div>
                       <h3 className="font-semibold">{booking.property}</h3>
                       <p className="text-sm text-gray-500">{booking.dates}</p>
                     </div>
@@ -350,7 +350,7 @@ export function AdminDashboard() {
                     <p>${property.revenue.toLocaleString()} revenue</p>
                   </div>
                 </div>
-              </div>
+            </div>
             ))}
           </div>
         </div>
