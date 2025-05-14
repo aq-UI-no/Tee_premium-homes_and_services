@@ -112,12 +112,6 @@ export function ServicesPage() {
             >
               Get Started
             </button>
-            <button
-              onClick={() => navigate('/list-property')}
-              className="border-2 border-white text-white px-8 py-3 rounded-lg hover:bg-white/10 transition-colors"
-            >
-              List Your Property
-            </button>
           </div>
         </div>
       </div>

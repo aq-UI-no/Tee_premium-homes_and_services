@@ -150,7 +150,7 @@ export function HeroSection() {
           </div>
         </div>
 
-        {/* CTA Buttons */}
+        {/* Call to Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-delay-2">
           <Button 
             size="lg" 
@@ -159,14 +159,6 @@ export function HeroSection() {
           >
             Browse Properties
             <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
-          <Button 
-            size="lg" 
-            variant="outline" 
-            className="bg-white/10 text-white border-white hover:bg-white/20 text-lg px-8 py-6"
-            onClick={() => navigate('/list-property')}
-          >
-            List Your Property
           </Button>
         </div>
       </div>

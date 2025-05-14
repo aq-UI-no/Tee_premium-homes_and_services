@@ -18,7 +18,6 @@ import {
   CheckCircle,
   AlertCircle
 } from 'lucide-react';
-import { toast } from 'react-hot-toast';
 
 export default function ContactPage() {
   const [formData, setFormData] = React.useState({
@@ -46,7 +45,6 @@ export default function ContactPage() {
       
       // Show success message
       setSubmitSuccess(true);
-      toast.success('Message sent successfully! We will get back to you soon.');
       
       // Reset form
       setFormData({
@@ -64,7 +62,6 @@ export default function ContactPage() {
     } catch (error) {
       console.error('Error submitting form:', error);
       setSubmitError('Failed to send message. Please try again later.');
-      toast.error('Failed to send message. Please try again later.');
     } finally {
       setIsSubmitting(false);
     }

@@ -45,13 +45,6 @@ export function Navbar() {
                 <Button
                   variant="ghost"
                   className="hidden md:flex"
-                  onClick={() => navigate('/list-property')}
-                >
-                  List your property
-                </Button>
-                <Button
-                  variant="ghost"
-                  className="hidden md:flex"
                   onClick={() => navigate('/dashboard')}
                 >
                   Dashboard

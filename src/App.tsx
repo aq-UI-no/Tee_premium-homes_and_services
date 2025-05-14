@@ -1,181 +1,94 @@
-import React from 'react';
+import * as React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Navigation } from './components/navigation';
-import { Footer } from './components/footer';
+import { AuthProvider } from './contexts/auth-context';
+import { ToastProvider } from './components/ui/toaster';
+import { MainLayout } from './components/layout/MainLayout';
+import { ProtectedRoute } from './components/auth/protected-route';
+import { ROUTES } from './constants';
+
+// Pages
 import { HomePage } from './pages/home';
+import { PropertiesPage } from './pages/properties';
+import { PropertyDetailsPage } from './pages/property-details';
+import { ServicesPage } from './pages/services';
+import { AboutPage } from './pages/about';
+import { ContactPage } from './pages/contact';
 import { LoginPage } from './pages/auth/login';
 import { SignUpPage } from './pages/auth/signup';
 import { AdminLoginPage } from './pages/auth/admin-login';
-import { ListPropertyPage } from './pages/list-property';
-import { PropertyDetailsPage } from './pages/property-details';
-import { DashboardPage } from './pages/dashboard';
-import { AdminDashboard } from './pages/admin/dashboard';
-import { PropertiesPage } from './pages/admin/properties';
-import { BookingsPage } from './pages/admin/bookings';
-import { SearchPage } from './pages/search';
-import { PropertiesPage as ClientPropertiesPage } from './pages/properties';
-import { ServicesPage } from './pages/services';
-import { AboutPage } from './pages/about';
-import ContactPage from './pages/contact';
-import { FilterProvider } from './contexts/FilterContext';
-import { AdminProtectedRoute } from './components/auth/AdminProtectedRoute';
-import './styles/colors.css';
 
-export default function App() {
+// Admin Pages
+import { AdminDashboard } from './pages/admin/dashboard';
+import { AdminProperties } from './pages/admin/properties';
+import { AdminBookings } from './pages/admin/bookings';
+import { AdminUsers } from './pages/admin/users';
+import { AdminSettings } from './pages/admin/settings';
+
+export function App() {
   return (
     <Router>
-      <FilterProvider>
-        <Routes>
-          {/* Public Routes */}
-          <Route
-            path="/"
-            element={
-              <>
-                <Navigation />
-                <main className="flex-grow">
-                  <HomePage />
-                </main>
-                <Footer />
-              </>
-            }
-          />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<SignUpPage />} />
-          <Route path="/admin/login" element={<AdminLoginPage />} />
-
-          {/* Protected Client Routes */}
-          <Route
-            path="/dashboard"
-            element={
-              <>
-                <Navigation />
-                <main className="flex-grow">
-                  <DashboardPage />
-                </main>
-                <Footer />
-              </>
-            }
-          />
-          <Route
-            path="/list-property"
-            element={
-              <>
-                <Navigation />
-                <main className="flex-grow">
-                  <ListPropertyPage />
-                </main>
-                <Footer />
-              </>
-            }
-          />
-          <Route
-            path="/properties"
-            element={
-              <>
-                <Navigation />
-                <main className="flex-grow">
-                  <ClientPropertiesPage />
-                </main>
-                <Footer />
-              </>
-            }
-          />
-          <Route
-            path="/properties/:id"
-            element={
-              <>
-                <Navigation />
-                <main className="flex-grow">
-                  <PropertyDetailsPage />
-                </main>
-                <Footer />
-              </>
-            }
-          />
-          <Route
-            path="/services"
-            element={
-              <>
-                <Navigation />
-                <main className="flex-grow">
-                  <ServicesPage />
-                </main>
-                <Footer />
-              </>
-            }
-          />
-          <Route
-            path="/about"
-            element={
-              <>
-                <Navigation />
-                <main className="flex-grow">
-                  <AboutPage />
-                </main>
-                <Footer />
-              </>
-            }
-          />
-          <Route
-            path="/contact"
-            element={
-              <>
-                <Navigation />
-                <main className="flex-grow">
-                  <ContactPage />
-                </main>
-                <Footer />
-              </>
-            }
-          />
-          <Route
-            path="/search"
-            element={
-              <>
-                <Navigation />
-                <main className="flex-grow">
-                  <SearchPage />
-                </main>
-                <Footer />
-              </>
-            }
-          />
-
-          {/* Admin Routes */}
-          <Route
-            path="/admin"
-            element={
-              <AdminProtectedRoute>
-                <AdminDashboard />
-              </AdminProtectedRoute>
-            }
-          />
-          <Route
-            path="/admin/properties"
-            element={
-              <AdminProtectedRoute>
-                <PropertiesPage />
-              </AdminProtectedRoute>
-            }
-          />
-          <Route
-            path="/admin/bookings"
-            element={
-              <AdminProtectedRoute>
-                <BookingsPage />
-              </AdminProtectedRoute>
-            }
-          />
-          <Route
-            path="/admin/*"
-            element={
-              <AdminProtectedRoute>
-                <AdminDashboard />
-              </AdminProtectedRoute>
-            }
-          />
-        </Routes>
-      </FilterProvider>
+      <AuthProvider>
+        <ToastProvider>
+          <Routes>
+            {/* Public Routes */}
+            <Route element={<MainLayout />}>
+              <Route path={ROUTES.HOME} element={<HomePage />} />
+              <Route path={ROUTES.PROPERTIES} element={<PropertiesPage />} />
+              <Route path={ROUTES.PROPERTY_DETAIL(':id')} element={<PropertyDetailsPage />} />
+              <Route path={ROUTES.SERVICES} element={<ServicesPage />} />
+              <Route path={ROUTES.ABOUT} element={<AboutPage />} />
+              <Route path={ROUTES.CONTACT} element={<ContactPage />} />
+              
+              {/* Auth Routes */}
+              <Route path={ROUTES.AUTH.LOGIN} element={<LoginPage />} />
+              <Route path={ROUTES.AUTH.REGISTER} element={<SignUpPage />} />
+              <Route path={ROUTES.AUTH.ADMIN_LOGIN} element={<AdminLoginPage />} />
+              
+              {/* Admin Routes */}
+              <Route
+                path={ROUTES.ADMIN.DASHBOARD}
+                element={
+                  <ProtectedRoute requireAdmin>
+                    <AdminDashboard />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path={ROUTES.ADMIN.PROPERTIES}
+                element={
+                  <ProtectedRoute requireAdmin>
+                    <AdminProperties />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path={ROUTES.ADMIN.BOOKINGS}
+                element={
+                  <ProtectedRoute requireAdmin>
+                    <AdminBookings />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path={ROUTES.ADMIN.USERS}
+                element={
+                  <ProtectedRoute requireAdmin>
+                    <AdminUsers />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path={ROUTES.ADMIN.SETTINGS}
+                element={
+                  <ProtectedRoute requireAdmin>
+                    <AdminSettings />
+                  </ProtectedRoute>
+                }
+              />
+            </Route>
+          </Routes>
+        </ToastProvider>
+      </AuthProvider>
     </Router>
   );
 }
